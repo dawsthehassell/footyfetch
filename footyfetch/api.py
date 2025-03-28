@@ -14,19 +14,22 @@ HEADERS = {
     "x-apisports-key": API_KEY
 }
 
-def search_league_by_name(name):
+def search_league_by_name(league_name):
     url = f"{BASE_URL}/leagues"
     response = requests.get(url, headers=HEADERS)
+    data = response.json()
 
-    if response.status_code == 200:
-        leagues = response.json()["response"]
-        for league_data in leagues:
-            league = league_data["league"]
-            if league["name"].lower() == name.lower():
-                return league
-        print(f"League '{name}' not found.")
+    if "response" in data:
+        leagues = data["response"] # list of leagues
 
-    else:
-        print(f"Error fetching leagues: {response.status_code} - {response.text}")
+        for league in leagues:
+            league_info = league["league"]
+            country_info = league.get("country", {}) # avoid KeyError if missing
+            
+            if league_name.lower() in league_info["name"].lower():
+                return {
+                    "name": league_info["name"],
+                    "country": country_info.get("name", "unknown")
+                }
         
-    return None
+    return None     # Return None if no match is found

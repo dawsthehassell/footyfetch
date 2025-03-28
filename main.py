@@ -1,9 +1,4 @@
-from footyfetch.api import get_leagues  # Import the function
+from footyfetch.cli import get_league_from_cli
 
-leagues = get_leagues()  # Call the function
-
-if leagues:
-    print("✅ API request successful!")
-    print(leagues)  # Print the raw JSON response
-else:
-    print("❌ API request failed.")
+if __name__ == "__main__":
+    get_league_from_cli()
