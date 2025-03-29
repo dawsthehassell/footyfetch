@@ -22,6 +22,9 @@ def get_info_from_cli():
             print(f"Team: {team['name']}")
             print(f"Stadium: {team['venue']}")
             print(f"Domestic League: {team['league']}")
-            print(f"23-24 Season Standings: {team['standing']} place")
+            if team['standing'] != "N/A":
+                print(f"23-24 League Place: {team['standing']} place")
+            else:
+                print(f"23-24 League Place: Unavailable")
         else:
             print(f"Team '{args.team}' not found. Try a different name.")

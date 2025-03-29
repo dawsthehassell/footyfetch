@@ -36,7 +36,7 @@ def search_league_by_name(league_name):
 
 def search_team_info(team_name):
     url = f"{BASE_URL}teams"
-    response = requests.get(url, headers=HEADERS, params={"search": {team_name}})
+    response = requests.get(url, headers=HEADERS, params={"search": team_name})
     data = response.json()
 
     if data.get("response") and isinstance(data["response"], list) and len(data["response"]) > 0:
@@ -58,7 +58,10 @@ def search_team_info(team_name):
             print("ERROR: No league data found for team!")
             return None
         
-        if isinstance(league_id, int): # ensures league id is an int
+        if not league_id:
+            league_name = "N/A"
+            standings = "N/A"
+        else:
             standings_url = f"{BASE_URL}standings"
             standings_response = requests.get(standings_url, headers=HEADERS, params={
                 "team": team_id,
@@ -69,17 +72,19 @@ def search_team_info(team_name):
 
             if "response" in standings_data and standings_data["response"]:
                 standings_list = standings_data["response"][0]["league"]["standings"]
-                
+
                 if isinstance(standings_list, list) and len(standings_list) > 0:
                     standings = standings_list[0][0]["rank"]
                 else:
                     standings = "N/A"
+            else:
+                standings = "N/A"
 
-            return {
-                "name": team_name_api,
-                "venue": team_venue,
-                "league": league_name,
-                "standing": standings
-            }
+        return {
+            "name": team_name_api,
+            "venue": team_venue,
+            "league": league_name,
+            "standing": standings
+        }
         
-        return None     # Returns None if no team is found
+    return None     # Returns None if no team is found
