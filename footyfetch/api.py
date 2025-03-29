@@ -36,29 +36,50 @@ def search_league_by_name(league_name):
 
 def search_team_info(team_name):
     url = f"{BASE_URL}teams"
-    response = requests.get(url, headers=HEADERS, params={"search": team_name})
+    response = requests.get(url, headers=HEADERS, params={"search": {team_name}})
     data = response.json()
 
-    if "response" in data and data["response"]:
+    if data.get("response") and isinstance(data["response"], list) and len(data["response"]) > 0:
         team_data = data["response"][0]
         team_id = team_data["team"]["id"]
-        team_name = team_data["team"]["name"] # this variable name is also the input param
+        team_name_api = team_data["team"]["name"]
         team_venue = team_data["venue"]["name"]
+        season = 2023 # adjust to be dynamic?
 
-        standings_url = f"{BASE_URL}standings"
-        standings_response = requests.get(standings_url, headers=HEADERS, params={"team": team_id})
-        standings_data = standings_response.json()
+        leagues_url = f"{BASE_URL}leagues"
+        leagues_response = requests.get(leagues_url, headers=HEADERS, params={"team": team_id})
+        leagues_data = leagues_response.json()
 
-        if "response" in standings_data and standings_data["response"]:
-            league_data = standings_data["response"][0]["league"]
-            league_name = league_data["name"]
-            standings = league_data["standings"][0][0]["rank"]
+        if "response" in leagues_data and leagues_data["response"]:
+            league_data = leagues_data["response"][0]["league"]
+            league_id = league_data.get("id")
+            league_name = league_data.get("name", "Unknown League")
+        else:
+            print("ERROR: No league data found for team!")
+            return None
+        
+        if isinstance(league_id, int): # ensures league id is an int
+            standings_url = f"{BASE_URL}standings"
+            standings_response = requests.get(standings_url, headers=HEADERS, params={
+                "team": team_id,
+                "league": league_id,
+                "season": season
+                })
+            standings_data = standings_response.json()
+
+            if "response" in standings_data and standings_data["response"]:
+                standings_list = standings_data["response"][0]["league"]["standings"]
+                
+                if isinstance(standings_list, list) and len(standings_list) > 0:
+                    standings = standings_list[0][0]["rank"]
+                else:
+                    standings = "N/A"
 
             return {
-                "name": team_name,
+                "name": team_name_api,
                 "venue": team_venue,
                 "league": league_name,
                 "standing": standings
             }
-    
-    return None     # Returns None if no team is found
+        
+        return None     # Returns None if no team is found

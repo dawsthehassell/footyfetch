@@ -17,10 +17,11 @@ def get_info_from_cli():
     
     if args.team:
         team = search_team_info(args.team)
+
         if team:
             print(f"Team: {team['name']}")
             print(f"Stadium: {team['venue']}")
             print(f"Domestic League: {team['league']}")
-            print(f"Current Standings: {team['standing']} place")
+            print(f"23-24 Season Standings: {team['standing']} place")
         else:
             print(f"Team '{args.team}' not found. Try a different name.")
