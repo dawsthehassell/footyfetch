@@ -1,0 +1,70 @@
+{
+    "team_manchester united": [
+        1743552416.937025,
+        {
+            "name": "Manchester United",
+            "venue": "Old Trafford",
+            "league": "Premier League",
+            "standing": 8
+        }
+    ],
+    "league_premier league": [
+        1743552475.1374562,
+        {
+            "name": "Premier League",
+            "country": "England"
+        }
+    ],
+    "team_houston dynamo": [
+        1743552592.079757,
+        {
+            "name": "Houston Dynamo",
+            "venue": "Shell Energy Stadium",
+            "league": "US Open Cup",
+            "standing": "N/A"
+        }
+    ],
+    "team_inter miami": [
+        1743552645.0110998,
+        {
+            "name": "Inter Miami",
+            "venue": "Chase Stadium",
+            "league": "Friendlies Clubs",
+            "standing": "N/A"
+        }
+    ],
+    "team_vancouver whitecaps": [
+        1743553963.388751,
+        {
+            "name": "Vancouver Whitecaps",
+            "venue": "BC Place",
+            "league": "Major League Soccer",
+            "standing": 6
+        }
+    ],
+    "team_seattle sounders": [
+        1743554034.953773,
+        {
+            "name": "Seattle Sounders",
+            "venue": "Lumen Field",
+            "league": "Major League Soccer",
+            "standing": 2
+        }
+    ],
+    "league_major league soccer": [
+        1743554067.107108,
+        {
+            "name": "Major League Soccer",
+            "country": "USA"
+        }
+    ],
+    "team_fc dallas": [
+        1743554088.878997,
+        {
+            "name": "FC Dallas",
+            "venue": "Toyota Stadium",
+            "league": "MLS",
+            "standing": "Unavailable"
+        }
+    ]
+}

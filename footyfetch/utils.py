@@ -34,3 +34,41 @@ def set_cache_data(key, data):
     cache = load_cache()
     cache[key] = (time.time(), data)
     save_cache(cache)
+
+MLS_teams = [
+    "atlanta united",
+    "austin fc",
+    "charlotte fc",
+    "chicago fire fc",
+    "fc cincinnati",
+    "colorado rapids",
+    "columbus crew",
+    "dc united",
+    "fc dallas",
+    "houston dynamo fc",
+    "houston dynamo",
+    "sporting kansas city",
+    "la galaxy",
+    "los angeles fc"
+    "lafc",
+    "inter miami cf",
+    "inter miami",
+    "minnesota united fc"
+    "minnesota united",
+    "cf montreal",
+    "nashville sc",
+    "new england revolution",
+    "new york red bulls",
+    "new york city fc",
+    "orlando city",
+    "philadelphia union",
+    "portland timbers",
+    "real salt lake",
+    "san diego fc",
+    "st louis city sc"
+    "st louis city"
+    "toronto fc"
+    "toronto"
+    "vancouver whitecaps fc"
+    "vancouver whitecaps"
+]

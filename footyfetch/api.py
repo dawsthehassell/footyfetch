@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 import requests
-from footyfetch.utils import get_cached_data, set_cache_data
+from footyfetch.utils import get_cached_data, set_cache_data, MLS_teams
 
 # Loads env variables from .env
 load_dotenv()
@@ -62,6 +62,16 @@ def search_team_info(team_name):
         team_name_api = team_data["team"]["name"]
         team_venue = team_data["venue"]["name"]
         season = 2023 # adjust to be dynamic?
+
+        if team_name_api.lower() in MLS_teams:
+            team_info = {
+                "name": team_name_api,
+                "venue": team_venue,
+                "league": "MLS",
+                "standing": "Unavailable"
+            }
+            set_cache_data(cache_key, team_info)
+            return team_info
 
         leagues_url = f"{BASE_URL}leagues"
         leagues_response = requests.get(leagues_url, headers=HEADERS, params={"team": team_id})
