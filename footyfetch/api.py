@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 import requests
+from footyfetch.utils import get_cached_data, set_cache_data
 
 # Loads env variables from .env
 load_dotenv()
@@ -35,6 +36,12 @@ def search_league_by_name(league_name):
     return None     # Return None if no match is found
 
 def search_team_info(team_name):
+    cache_key = f"team_{team_name.lower()}"
+    cached_data = get_cached_data(cache_key)
+
+    if cached_data:
+        return cached_data
+    
     url = f"{BASE_URL}teams"
     response = requests.get(url, headers=HEADERS, params={"search": team_name})
     data = response.json()
@@ -80,11 +87,15 @@ def search_team_info(team_name):
             else:
                 standings = "N/A"
 
-        return {
+        team_info = {
             "name": team_name_api,
             "venue": team_venue,
             "league": league_name,
             "standing": standings
         }
+
+        set_cache_data(cache_key, team_info)
+        
+        return team_info
         
     return None     # Returns None if no team is found
