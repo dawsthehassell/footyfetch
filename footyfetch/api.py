@@ -16,6 +16,12 @@ HEADERS = {
 }
 
 def search_league_by_name(league_name):
+    cache_key = f"league_{league_name.lower()}"
+    cached_data = get_cached_data(cache_key)
+
+    if cached_data:
+        return cached_data
+    
     url = f"{BASE_URL}leagues"
     response = requests.get(url, headers=HEADERS)
     data = response.json()
@@ -28,10 +34,14 @@ def search_league_by_name(league_name):
             country_info = league.get("country", {}) # avoid KeyError if missing
             
             if league_name.lower() in league_info["name"].lower():
-                return {
+                league_info =  {
                     "name": league_info["name"],
                     "country": country_info.get("name", "unknown")
                 }
+
+                set_cache_data(cache_key, league_info)
+
+                return league_info
         
     return None     # Return None if no match is found
 
