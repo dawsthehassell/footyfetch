@@ -35,6 +35,13 @@ def set_cache_data(key, data):
     cache[key] = (time.time(), data)
     save_cache(cache)
 
+def clear_cache():
+    if os.path.exists(CACHE_FILE):
+        os.remove(CACHE_FILE)
+        print("Cache file cleared.")
+    else:
+        print("No cache file found.")
+
 MLS_teams = [
     "atlanta united",
     "austin fc",

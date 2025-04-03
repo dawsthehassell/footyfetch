@@ -1,97 +1,11 @@
 {
-    "team_manchester united": [
-        1743714945.7466109,
+    "team_austin": [
+        1743720677.304491,
         {
-            "name": "Manchester United",
-            "venue": "Old Trafford",
-            "league": "Premier League",
-            "standing": 8
-        }
-    ],
-    "league_premier league": [
-        1743552475.1374562,
-        {
-            "name": "Premier League",
-            "country": "England"
-        }
-    ],
-    "team_houston dynamo": [
-        1743717078.946173,
-        {
-            "name": "Houston Dynamo",
-            "venue": "Shell Energy Stadium",
-            "league": "MLS",
-            "standing": "Unavailable"
-        }
-    ],
-    "team_inter miami": [
-        1743718021.0706959,
-        {
-            "name": "Inter Miami",
-            "venue": "Chase Stadium",
-            "league": "MLS",
-            "standing": "Unavailable"
-        }
-    ],
-    "team_vancouver whitecaps": [
-        1743715473.824796,
-        {
-            "name": "Vancouver Whitecaps",
-            "venue": "BC Place",
-            "league": "MLS",
-            "standing": "Unavailable"
-        }
-    ],
-    "team_seattle sounders": [
-        1743554034.953773,
-        {
-            "name": "Seattle Sounders",
-            "venue": "Lumen Field",
-            "league": "Major League Soccer",
-            "standing": 2
-        }
-    ],
-    "league_major league soccer": [
-        1743717064.526876,
-        {
-            "name": "Major League Soccer",
-            "country": "USA"
-        }
-    ],
-    "team_fc dallas": [
-        1743717094.791788,
-        {
-            "name": "FC Dallas",
-            "venue": "Toyota Stadium",
-            "league": "MLS",
-            "standing": "Unavailable"
-        }
-    ],
-    "team_arsenal": [
-        1743714944.988768,
-        {
-            "name": "Arsenal",
-            "venue": "Emirates Stadium",
-            "league": "Premier League",
-            "standing": 2
-        }
-    ],
-    "team_real madrid": [
-        1743714946.5670772,
-        {
-            "name": "Real Madrid",
-            "venue": "Estadio Santiago Bernab\u00e9u",
-            "league": "La Liga",
-            "standing": 1
-        }
-    ],
-    "team_atlanta united": [
-        1743715578.2192042,
-        {
-            "name": "Atlanta United FC",
-            "venue": "Mercedes-Benz Stadium",
-            "league": "Major League Soccer",
-            "standing": 6
+            "name": "Austin Bold",
+            "venue": "Bold Stadium",
+            "league": "USL Championship",
+            "standing": "N/A"
         }
     ]
 }

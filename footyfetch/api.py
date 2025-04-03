@@ -27,14 +27,14 @@ def search_league_by_name(league_name):
     data = response.json()
 
     if "response" in data:
-        leagues = data["response"] # list of leagues
+        leagues = data["response"]  # list of leagues
 
         for league in leagues:
             league_info = league["league"]
-            country_info = league.get("country", {}) # avoid KeyError if missing
+            country_info = league.get("country", {})  # avoid KeyError if missing
             
             if league_name.lower() in league_info["name"].lower():
-                league_info =  {
+                league_info = {
                     "name": league_info["name"],
                     "country": country_info.get("name", "unknown")
                 }
@@ -43,7 +43,7 @@ def search_league_by_name(league_name):
 
                 return league_info
         
-    return None     # Return None if no match is found
+    return None  # Return None if no match is found
 
 def search_team_info(team_name):
     cache_key = f"team_{team_name.lower()}"
@@ -61,29 +61,26 @@ def search_team_info(team_name):
         team_id = team_data["team"]["id"]
         team_name_api = team_data["team"]["name"]
         team_venue = team_data["venue"]["name"]
-        season = 2023 # adjust to be dynamic?
-
-        if team_name_api.lower() in MLS_teams:
-            team_info = {
-                "name": team_name_api,
-                "venue": team_venue,
-                "league": "MLS",
-                "standing": "Unavailable"
-            }
-            set_cache_data(cache_key, team_info)
-            return team_info  # Remove this chunK?
+        season = 2023  # adjust to be dynamic?
 
         leagues_url = f"{BASE_URL}leagues"
         leagues_response = requests.get(leagues_url, headers=HEADERS, params={"team": team_id})
         leagues_data = leagues_response.json()
 
-        if "response" in leagues_data and leagues_data["response"]:
-            league_data = leagues_data["response"][0]["league"]
-            league_id = league_data.get("id")
-            league_name = league_data.get("name", "Unknown League")
-        else:
-            print("ERROR: No league data found for team!")
-            return None
+        league_id = None
+        league_name = "Unknown League"  # Initialize `league_name` here
+
+        for league_entry in leagues_data.get("response", []):
+            league = league_entry["league"]
+            if league["name"] == "Major League Soccer":
+                league_id = league["id"]
+                league_name = "Major League Soccer"
+                break
+
+        if league_id is None and leagues_data.get("response"):
+            first_league = leagues_data["response"][0]["league"]
+            league_id = first_league.get("id")
+            league_name = first_league.get("name", "Unknown League")
         
         if not league_id:
             league_name = "N/A"
@@ -118,4 +115,5 @@ def search_team_info(team_name):
         
         return team_info
         
-    return None     # Returns None if no team is found
+    return None
+
