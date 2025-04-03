@@ -65,10 +65,10 @@ MLS_teams = [
     "portland timbers",
     "real salt lake",
     "san diego fc",
-    "st louis city sc"
-    "st louis city"
-    "toronto fc"
-    "toronto"
-    "vancouver whitecaps fc"
+    "st louis city sc",
+    "st louis city",
+    "toronto fc",
+    "toronto",
+    "vancouver whitecaps fc",
     "vancouver whitecaps"
-]
+]   # stores MLS teams in case it's not recognized as MLS team thru the API

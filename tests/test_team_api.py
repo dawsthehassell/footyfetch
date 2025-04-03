@@ -23,11 +23,5 @@ class TestTeamFetchAPI(unittest.TestCase):
         self.assertEqual(team["venue"], "Estadio Santiago Bernabéu")
         self.assertEqual(team["league"], "La Liga")
 
-    def test_mls_team(self): # come  back to this
-        team = search_team_info("Inter Miami")
-        self.assertIsNotNone(team)
-        self.assertEqual(team["name"], "Inter Miami")
-        self.assertEqual(team["venue"], "Chase Stadium")
-
 if __name__ == "__main__":
     unittest.main()

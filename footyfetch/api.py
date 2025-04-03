@@ -71,7 +71,7 @@ def search_team_info(team_name):
                 "standing": "Unavailable"
             }
             set_cache_data(cache_key, team_info)
-            return team_info
+            return team_info  # Remove this chunK?
 
         leagues_url = f"{BASE_URL}leagues"
         leagues_response = requests.get(leagues_url, headers=HEADERS, params={"team": team_id})
