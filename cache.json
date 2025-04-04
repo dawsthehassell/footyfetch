@@ -7,5 +7,50 @@
             "league": "USL Championship",
             "standing": "N/A"
         }
+    ],
+    "team_borussia dortmund": [
+        1743790197.5101042,
+        {
+            "name": "Borussia Dortmund",
+            "venue": "BVB Stadion Dortmund",
+            "league": "Bundesliga",
+            "standing": 5
+        }
+    ],
+    "team_real madrid": [
+        1743790198.3300989,
+        {
+            "name": "Real Madrid",
+            "venue": "Estadio Santiago Bernab\u00e9u",
+            "league": "La Liga",
+            "standing": 1
+        }
+    ],
+    "team_feyenoord": [
+        1743790199.08884,
+        {
+            "name": "Feyenoord",
+            "venue": "Stadion Feijenoord",
+            "league": "Eredivisie",
+            "standing": 2
+        }
+    ],
+    "team_manchester united": [
+        1743790199.6258078,
+        {
+            "name": "Manchester United",
+            "venue": "Old Trafford",
+            "league": "N/A",
+            "standing": "N/A"
+        }
+    ],
+    "team_club america": [
+        1743790201.597852,
+        {
+            "name": "Club America",
+            "venue": "Estadio Azteca",
+            "league": "FIFA Club World Cup",
+            "standing": "N/A"
+        }
     ]
 }
