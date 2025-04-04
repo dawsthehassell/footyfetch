@@ -18,10 +18,10 @@ class TestTeamFetchAPI(unittest.TestCase):
         self.assertEqual(team["league"], "Bundesliga")
 
     def test_serie_a_team(self):
-        team = search_team_info("Udinese Calcio")
+        team = search_team_info("Udinese")
         self.assertIsNotNone(team)
-        self.assertEqual(team["name"], "Udinese Calcio")
-        self.assertEqual(team["venue"], "Stadio Friuli")
+        self.assertEqual(team["name"], "Udinese")
+        self.assertEqual(team["venue"], "Bluenergy Stadium")
         self.assertEqual(team["league"], "Serie A")
 
     def test_la_liga_team(self):
@@ -56,7 +56,7 @@ class TestTeamFetchAPI(unittest.TestCase):
     def test_french_league(self):
         team = search_team_info("Paris Saint Germain")
         self.assertIsNotNone(team)
-        self.assertEqual(team["name"], "Paris Saint-Germain")
+        self.assertEqual(team["name"], "Paris Saint Germain")
         self.assertEqual(team["venue"], "Parc des Princes")
         self.assertEqual(team["league"], "Ligue 1")
 

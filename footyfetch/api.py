@@ -57,7 +57,16 @@ def search_team_info(team_name):
     data = response.json()
 
     if data.get("response") and isinstance(data["response"], list) and len(data["response"]) > 0:
-        team_data = data["response"][0]
+        best_match = None
+        for team in data["response"]:
+            team_name_api = team["team"]["name"]
+            if team_name.lower() == team_name_api.lower():
+                best_match = team
+                break
+            if best_match is None and team_name.lower() in team_name_api.lower():
+                best_match = team
+
+        team_data = best_match if best_match else data["response"][0]
         team_id = team_data["team"]["id"]
         team_name_api = team_data["team"]["name"]
         team_venue = team_data["venue"]["name"]
